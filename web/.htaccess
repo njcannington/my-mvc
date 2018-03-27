@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/(css|js|img|coverage)/.*
+RewriteRule ^(.*)$ $1
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php?q=$1 [L,QSA]
