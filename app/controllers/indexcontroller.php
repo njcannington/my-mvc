@@ -1,10 +1,10 @@
 <?php
-namespace App\Controllers\Index;
+namespace App\Controllers;
 
 class IndexController
 {
     public function indexAction()
     {
-        return [];
+        return ["text" => "hello world "];
     }
 }
