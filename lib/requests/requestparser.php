@@ -41,27 +41,27 @@ class RequestParser
 
     private function extractFromOneElement()
     {
-        if (current($this->request) == "index.php") {
-            $path = "/";
-            $namespace = "\\";
-            $view = "/index/index.html";
-        } else {
-            $path = "/".current($this->request)."/";
-            $namespace = "\\".ucfirst(current($this->request))."\\";
-            $view = strtolower($path."index.html");
-        }
+        $path = "/";
+        $namespace = "\\";
         $controller = "Index";
-        $action = "Index";
 
+
+        if (current($this->request) == "index") {
+            $view = "/index.html";
+            $action = "Index";
+        } else {
+            $view = "/".current($this->request).".html";
+            $action = current($this->request);
+        }
 
         return compact("path", "controller", "action", "namespace", "view");
     }
 
     private function extractFromTwoElements()
     {
-        $path = "/".Lib($this->request)."/";
+        $path = "/".current($this->request)."/";
         $controller = "Index";
-        $action = ucfirst(next($this->request));
+        $action = next($this->request);
         $namespace = str_replace("/", "\\", $path);
         $view = strtolower($path.$action.".html");
 
