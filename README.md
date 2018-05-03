@@ -13,28 +13,28 @@ In order to gain a better understanding of how the MVC framework operates. I wan
 3. <strong>MySQL 5.7.20</strong>
 
 
-## Usage
-The controller and view paths are related to the URL's path. Here's a breakdown of where the controller and view files need to be placed, given the URL path.
+## Routing
+Here's a breakdown of where the controller and view files need to be placed, given the URL path.
 
 ```
 1 backslash
 exampe url path     = www.domain.com/examplepath
 controller dir path = app/controllers/indexcontroller.php
-class               = indexController
-action              = thisAction
-view path           = app/views/examplepath.html
+controller          = indexController
+action              = examplepathAction
+view                = app/views/examplepath.html
 
 2 backslashes
 url path            = www.domain.com/exampleone/exampletwo
 controller dir path = app/controllers/exampleone/indexcontroller.php
-class               = indexController
+controller          = indexController
 action              = exampletwoAction
-view path           = app/views/exampleone/exampletwo.html
+view                = app/views/exampleone/exampletwo.html
 
 3 backslashes
 url path            = www.domain.com/exampleone/exampletwo/examplethree
 controller dir path = app/controllers/exampleone/exampletwocontroller.php
-class               = exampletwoController
+controller          = exampletwoController
 action              = examplethreeAction
-view path           = app/views/exampleone/exampletwo/examplethree.html
+view                = app/views/exampleone/exampletwo/examplethree.html
 ```
