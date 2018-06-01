@@ -9,11 +9,15 @@ class Route
 {
     protected $routes = [];
 
-/*
-***************************************
-*           PUBLIC METHODS
-***************************************
-*/
+    /*
+    ***************************************
+    *           PUBLIC METHODS
+    ***************************************
+    */
+
+    /*
+    * method for settingup uri to controller relationship
+    */
     public function add($uri, $controller, $action)
     {
         $this->routes[] =
@@ -22,6 +26,10 @@ class Route
         "action" => strtolower($action)."Action"];
     }
 
+    /*
+    * returns the corresponding controller/action based on uri
+    * if no controller found, returns ErrorController
+    */
     public function get($uri)
     {
         foreach ($this->routes as $route) {
@@ -36,11 +44,11 @@ class Route
         return $controller->indexAction();
     }
 
-/*
-***************************************
-*         PROTECTED METHODS
-***************************************
-*/
+    /*
+    ***************************************
+    *         PROTECTED METHODS
+    ***************************************
+    */
     protected function getController($uri)
     {
     }
