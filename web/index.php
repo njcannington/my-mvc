@@ -14,3 +14,6 @@ $route->add("/", "index", "index");
 //////////////////////////
 $uri = $_GET["uri"] ?? '';
 $route->get($uri);
+
+
+require_once(VIEWS."/layout.html");
