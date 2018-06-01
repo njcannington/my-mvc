@@ -1,5 +1,5 @@
 <?php
-namespace Lib\Config;
+namespace Lib;
 
 class Config
 {

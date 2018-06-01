@@ -1,23 +1,22 @@
 <?php
 require "../autoload.php";
 
-use Lib\Bootstrap\Bootstrap;
-use Lib\Db\Db;
+use Lib\Route;
+use Lib\Request;
 
-// grabs URI
-if (!isset($_GET["q"])) {
-    $uri = 'index';
-} else {
-    $uri = $_GET["q"];
-}
+$uri = $_GET["uri"] ?? '';
 
-// initialize database
-$db = Db::getInstance();
+/*
+* add any new routes below using add($uri, $controller, $action, $view)
+*/
+//////////////////////////
+$route = new Route($uri);
+$route->add("/", "index", "index");
 
-// routing
-$bootstrap = new Bootstrap($uri);
-$action = $bootstrap->request->action."Action";
-$data = $bootstrap->controller->$action();
+$route->set();
+//////////////////////////
 
+$request = new Request($route);
+$data = $request->getData();
 
 require_once(VIEWS."/layout.html");
