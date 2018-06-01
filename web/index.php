@@ -2,18 +2,21 @@
 require "../autoload.php";
 
 use Lib\Route;
+use Lib\Request;
 
-$route = new Route();
+$uri = $_GET["uri"] ?? '';
+
 /*
-* add any new routes below
+* add any new routes below using add($uri, $controller, $action, $view)
 */
 //////////////////////////
+$route = new Route($uri);
 $route->add("/", "index", "index");
 
-
+$route->set();
 //////////////////////////
-$uri = $_GET["uri"] ?? '';
-$route->get($uri);
 
+$request = new Request($route);
+$data = $request->getData();
 
 require_once(VIEWS."/layout.html");
